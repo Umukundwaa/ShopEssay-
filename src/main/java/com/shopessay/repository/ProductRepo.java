@@ -10,11 +10,15 @@ import java.util.List;
 public class ProductRepo {
 
     private List<Product> products = new ArrayList<>();
+    private Long nextId = 1L;
 
     public List<Product> getAllProducts() {
         return products;
     }
+    
+
     public void addProduct(Product product) {
+        product.setId(nextId++);
         this.products.add(product);
     }
     public Product getProductById(Long id) {
