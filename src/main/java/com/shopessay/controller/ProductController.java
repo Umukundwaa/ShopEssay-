@@ -22,12 +22,22 @@ public class ProductController {
     public void addProduct(@RequestBody  Product product) {
         productService.addProduct(product);
     }
-    @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.getProductsById(id);
-    }
+
     @DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable Long id) {
         productService.deleteProductById(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateProductById(@PathVariable Long id, @RequestBody Product product) {
+        productService.updateProduct(id, product);
+    }
+    @GetMapping("/category/{category}")
+    public List<Product> getProductsByCategory(@PathVariable String category) {
+        return productService.getProductByCategory(category);
+    }
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable Long id) {
+        return productService.getProductsById(id);
     }
 }
